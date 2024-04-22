@@ -1,0 +1,57 @@
+<div class="jumbotron">
+
+    <h2 class="display-4 text-center">Dane Użytkowników </h2>
+    <button class="btn btn-primary login-btn logout" (click)="logout()">Wyloguj</button>
+</div>
+
+
+<div class="row">
+    <div class="col-md-6">
+
+        <app-client-form></app-client-form>
+
+
+    </div>
+    <div class="col-md-6">
+
+        <span>Zapisani użytkownicy</span>
+
+        <table class="table">
+
+            <thead class="thead-light">
+
+            <tr>
+                <th>Id</th>
+                <th>FirstName</th>
+                <th>LastName</th>
+                <th>Pesel</th>
+                <th>Email</th>
+                <th>Hash</th>
+                <th>Role</th>
+            </tr>
+        </thead>
+
+        <tbody >
+            <tr *ngFor="let cl of service.list">
+                <td>{{cl.clientId}}</td>
+                <td>{{cl.clientFirstName}}</td>
+                <td>{{cl.clientLastName}}</td>
+                <td>{{cl.clientPesel}}</td>
+                <td>{{cl.clientEmail}}</td>
+                <td>{{cl.clientHash}}</td>
+                <td>{{cl.clientRole}}</td>
+                <td>
+
+                    <i class="far fa-trash-alt fa-lg text-danger" (click)="onDelete(cl.clientId)"></i>
+                    
+                </td>
+                <td>
+                <i class="fa-solid fa-pen-to-square" (click)="onEdit(cl)"></i>
+                </td>
+            </tr>
+
+        </tbody>
+        </table>
+
+    </div>
+</div>

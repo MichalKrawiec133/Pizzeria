@@ -1,0 +1,52 @@
+<form novalidate #form="ngForm" (submit)="onSubmit(form)">
+
+    <div class="form-group">
+        <label >ClientId</label>
+        <input class="form-control form-control-lg" placeholder="Client Id" 
+        name ="ClientId" #ClientId="ngModel" [(ngModel)]="service.formData.clientId">
+    </div>
+
+    <div class="form-group">
+        <label >ClientFirstName</label>
+        <input class="form-control form-control-lg" placeholder="FirstName" 
+        name ="ClientFirstName" #ClientFirstName="ngModel" [(ngModel)]="service.formData.clientFirstName">
+    </div>
+
+    <div class="form-group">
+        <label >ClientLastName</label>
+        <input class="form-control form-control-lg" placeholder="LastName" 
+        name ="ClientLastName" #ClientLastName="ngModel" [(ngModel)]="service.formData.clientLastName">
+    </div>
+    
+    <div class="form-group">
+        <label >ClientPesel</label>
+        <input class="form-control form-control-lg" placeholder="Pesel" 
+        name ="ClientPesel" #ClientPesel="ngModel" [(ngModel)]="service.formData.clientPesel">
+    </div>
+    <div class="form-group">
+        <label >ClientEmail</label>
+        <input class="form-control form-control-lg" placeholder="Email" 
+        name ="ClientEmail" #ClientEmail="ngModel" [(ngModel)]="service.formData.clientEmail">
+    </div>
+    <div class="form-group">
+        <label >ClientHash</label>
+        <input class="form-control form-control-lg" placeholder="Hash" 
+        name ="ClientHash" #ClientHash="ngModel" [(ngModel)]="service.formData.clientHash">
+    </div>
+
+    <div class="form-group">
+        <label >ClientRole</label>
+        <input class="form-control form-control-lg" placeholder="Role" 
+        name ="ClientRole" #ClientRole="ngModel" [(ngModel)]="service.formData.clientRole">
+    </div>
+    
+
+    <div class="form-group">
+
+        <button type="submit" class="btn btn-primary btn-lg btn-info col-12">Dodaj klienta</button>
+        <button type="button" class="btn btn-primary btn-lg btn-info col-12" (click)="updateClient(service.formData.clientId, form)" >Zmień dane</button>
+  
+    </div>
+
+</form>
+

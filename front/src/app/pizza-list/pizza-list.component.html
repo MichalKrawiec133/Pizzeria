@@ -1,0 +1,91 @@
+<div class="jumbotron">
+
+    <h2 class="display-4 text-center">Nasze pizze! </h2>
+
+</div>
+
+<button *ngIf="!loginStatusService.isLoggedIn" class="btn btn-primary login-btn" (click)="onLogin()">Login</button>
+<button *ngIf="loginStatusService.isLoggedIn" class="btn btn-primary login-btn logout" (click)="logout()">Wyloguj</button>
+
+
+<div *ngIf="loginStatusService.isLoggedIn" class="cart-container">
+    <button class="cart-button" (click)="onCart()">
+      <i class="fa-solid fa-cart-shopping"></i>
+      <span class="user-name"> {{ loginStatusService.Imie }} {{service.cartCounter}}</span>
+    </button>
+  </div>
+  
+<div class="row">
+
+        <table class="table">
+
+            <thead class="thead-light">
+
+            <tr>
+                <th>Nazwa</th>
+                <th>Składniki</th>
+                <th>Cena</th>
+                <th>Dodaj do Koszyka</th>
+                
+            </tr>
+        </thead>
+
+        <tbody >
+            
+            <tr *ngFor="let pz of service.listPizza">
+                
+                <td>{{pz.productName}}</td>
+                <td>{{pz.productIngredients}}</td>
+                <td>{{pz.productPrice}}</td>
+                
+                <td>
+
+                    <i class=" fa-solid fa-cart-shopping text-center " (click)="onAddToCart(pz)"></i>
+                    
+                </td>
+                
+            </tr>
+
+        </tbody>
+        </table>
+
+
+
+        <table class="table" *ngIf="service.showCartInventory">
+
+            <thead class="thead-light">
+                <br><br>
+                <h2 class="display-4 text-center">Twój koszyk </h2>
+            <tr>
+                <th>Nazwa</th>
+                <th>Składniki</th>
+                <th>Cena</th>
+                
+            </tr>
+        </thead>
+
+        <tbody >
+            
+            <tr *ngFor="let cI of service.cartInventory">
+                
+                <td>{{cI.productName}}</td>
+                <td>{{cI.productIngredients}}</td>
+                <td>{{cI.productPrice}}</td>
+                <td>
+
+                    <i class="fa-solid fa-xmark" (click)="removeFromCart(cI)"></i>
+
+                </td>
+
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td>Razem:</td>
+                <td>{{ getCartPrice() }}</td>
+            </tr>
+
+        </tbody>
+        </table>
+
+</div>
